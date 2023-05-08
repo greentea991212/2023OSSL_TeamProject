@@ -7,7 +7,13 @@
 </div>
 
 
-# 🧑‍🍳 Cooking_recipe 
+# 💻 2023OSSL_Project 
+
+<div align="center">
+      <img src = "./images/frying-pan.png" width="450" height="400"/>
+      <h2>Cooking recipe</h2>
+</div>
+
 
 ## [CRUD 기능]
 > C : 요리 이름과 설명 레시피
