@@ -1,5 +1,5 @@
 ## stack
-<img src="https://img.shields.io/badge/C-#239DFF?style=flat-square&logo=c&logoColor=white"/>
+<img src="https://img.shields.io/badge/C-239DFF?style=flat-square&logo=c&logoColor=white"/>
 
 # [주제] : 요리 레시피 프로그램
 
