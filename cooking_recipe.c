@@ -15,25 +15,25 @@ void f_inint(Food *p){
 
 void f_recipe_add(Food *p){
 
-    printf("¸Ş´º Á¾·ù [ÇÑ½Ä, Áß½Ä, ÀÏ½Ä Áß ÅÃ 1] : ");
+    printf("ë©”ë‰´ ì¢…ë¥˜ [í•œì‹, ì¤‘ì‹, ì¼ì‹ ì¤‘ íƒ 1] : ");
     scanf("%s",p->f_category);
     getchar();
-    printf("¸Ş´º ÀÌ¸§ : ");
+    printf("ë©”ë‰´ ì´ë¦„ : ");
     fgets(p->f_name,BUFFER_SIZE,stdin);
     p->f_name[strlen(p->f_name)-1] = '\0';
 
-    printf("%sÀÇ ·¹½ÃÇÇ ³»¿ë : ",p->f_name);
+    printf("%sì˜ ë ˆì‹œí”¼ ë‚´ìš© : ",p->f_name);
     fgets(p->wiki,BUFFER_SIZE,stdin);
     p->wiki[strlen(p->wiki)-1] = '\0';
 
-    printf("\n¸Ş´º Ãß°¡°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù!\n");
+    printf("\në©”ë‰´ ì¶”ê°€ê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤!\n");
 
-    //°¢ ·¹½ÃÇÇ¿¡ ÀÎµ¦½º(³Ñ¹ö¸µ) ºÎ¿© ¹æ½Ä ³íÀÇ ¹× Ãß°¡ÀûÀÎ ÄÚµå ÀÛ¼º ÇÊ¿ä
+    //ê° ë ˆì‹œí”¼ì— ì¸ë±ìŠ¤(ë„˜ë²„ë§) ë¶€ì—¬ ë°©ì‹ ë…¼ì˜ ë° ì¶”ê°€ì ì¸ ì½”ë“œ ì‘ì„± í•„ìš”
 }
 
 void f_recipe_list(Food **p, int count){
 
-    printf("\n\t< µî·ÏµÈ ·¹½ÃÇÇ ¸ñ·Ï >\n\n");
+    printf("\n\t< ë“±ë¡ëœ ë ˆì‹œí”¼ ëª©ë¡ >\n\n");
 
     for(int i = 0; i < count; i++){
 
@@ -64,7 +64,7 @@ Food* f_find_name(Food **p, int count){
     int idx;
     char input[BUFFER_SIZE];
 
-    printf("¸Ş´º ÀÌ¸§ °Ë»ö : ");
+    printf("ë©”ë‰´ ì´ë¦„ ê²€ìƒ‰ : ");
     fgets(input,BUFFER_SIZE,stdin);
     input[strlen(input)-1] = '\0';
     
@@ -85,7 +85,7 @@ Food* f_find_index(Food **p, int count){
     int num;
     int idx;
 
-    printf("·¹½ÃÇÇ ¹øÈ£¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä.\n·¹½ÃÇÇ ¹øÈ£ : ");
+    printf("ë ˆì‹œí”¼ ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”.\në ˆì‹œí”¼ ë²ˆí˜¸ : ");
     scanf("%d",&num);
 
     for(int i = 0; i < count; i++){
@@ -106,11 +106,11 @@ void f_recipe_update(Food **p, int count){
     Food *tmp;
     int menu;
     
-    printf("\n\t[   ¼öÁ¤ÇÒ ·¹½ÃÇÇ °Ë»ö  ]\n\n");
-    printf("1. ¸Ş´º¸í °Ë»ö\n");
-    printf("2. Ä«Å×°í¸® °Ë»ö\n");
-    printf("3. ¹øÈ£ °Ë»ö\n");
-    printf("\n\n¸Ş´º ¼±ÅÃ => ");
+    printf("\n\t[   ìˆ˜ì •í•  ë ˆì‹œí”¼ ê²€ìƒ‰  ]\n\n");
+    printf("1. ë©”ë‰´ëª… ê²€ìƒ‰\n");
+    printf("2. ì¹´í…Œê³ ë¦¬ ê²€ìƒ‰\n");
+    printf("3. ë²ˆí˜¸ ê²€ìƒ‰\n");
+    printf("\n\në©”ë‰´ ì„ íƒ => ");
     scanf("%d",&menu);
     getchar();
 
@@ -129,11 +129,11 @@ void f_recipe_update(Food **p, int count){
         tmp = f_find_index(p, count);
     }
 
-    printf("\n\t[   ¼öÁ¤ ¼¼ºÎ»çÇ× ¼±ÅÃ ]\n");
-    printf("1. ¸Ş´º¸í ¼öÁ¤\n");
-    printf("2. Ä«Å×°í¸® ¼öÁ¤\n");
-    printf("3. ·¹½ÃÇÇ ³»¿ë ¼öÁ¤\n");
-    printf("\n¸Ş´º ¼±ÅÃ => ");
+    printf("\n\t[   ìˆ˜ì • ì„¸ë¶€ì‚¬í•­ ì„ íƒ ]\n");
+    printf("1. ë©”ë‰´ëª… ìˆ˜ì •\n");
+    printf("2. ì¹´í…Œê³ ë¦¬ ìˆ˜ì •\n");
+    printf("3. ë ˆì‹œí”¼ ë‚´ìš© ìˆ˜ì •\n");
+    printf("\në©”ë‰´ ì„ íƒ => ");
     scanf("%d",&menu);
     getchar();
 
@@ -141,26 +141,26 @@ void f_recipe_update(Food **p, int count){
 
 
         memset(tmp->f_name,0,sizeof(tmp->f_name));
-        printf("¸Ş´º ÀÌ¸§ : ");
+        printf("ë©”ë‰´ ì´ë¦„ : ");
         fgets(tmp->f_name,BUFFER_SIZE,stdin);
         tmp->f_name[strlen(tmp->f_name)-1] = '\0';
     }
     else if(menu == 2){
 
         memset(tmp->f_category,0,sizeof(tmp->f_category));
-        printf("Ä«Å×°í¸® [ÇÑ½Ä, ÀÏ½Ä, Áß½Ä] : \n");
+        printf("ì¹´í…Œê³ ë¦¬ [í•œì‹, ì¼ì‹, ì¤‘ì‹] : \n");
         scanf("%s",tmp->f_category);
     }
     else if(menu == 3){
 
         memset(tmp->wiki,0,sizeof(tmp->f_category));
-        printf("%sÀÇ ·¹½ÃÇÇ ³»¿ë : ",tmp->f_name);
+        printf("%sì˜ ë ˆì‹œí”¼ ë‚´ìš© : ",tmp->f_name);
         fgets(tmp->wiki,BUFFER_SIZE,stdin);
         tmp->wiki[strlen(tmp->wiki)-1] = '\0';
         
     }
 
-    printf("\n¼öÁ¤¿Ï·á!\n\n");
+    printf("\nìˆ˜ì •ì™„ë£Œ!\n\n");
 
 }
 
@@ -169,11 +169,11 @@ void f_recipe_delete(Food **p, int count){
     Food *tmp;
     int menu;
 
-    printf("\t[  »èÁ¦ÇÒ ·¹½ÃÇÇ °Ë»ö  ]\n");
-    printf("1. ¸Ş´º¸í °Ë»ö\n");
-    printf("2. Ä«Å×°í¸® °Ë»ö\n");
-    printf("3. ¹øÈ£ °Ë»ö\n");
-    printf("\n¸Ş´º ¼±ÅÃ => ");
+    printf("\t[  ì‚­ì œí•  ë ˆì‹œí”¼ ê²€ìƒ‰  ]\n");
+    printf("1. ë©”ë‰´ëª… ê²€ìƒ‰\n");
+    printf("2. ì¹´í…Œê³ ë¦¬ ê²€ìƒ‰\n");
+    printf("3. ë²ˆí˜¸ ê²€ìƒ‰\n");
+    printf("\në©”ë‰´ ì„ íƒ => ");
     scanf("%d",&menu);
 
     if(menu == 1){
@@ -198,10 +198,10 @@ void f_recipe_delete(Food **p, int count){
     // tmp->f_idx = 0;
 
     /*
-    1.»èÁ¦µÈ µ¥ÀÌÅÍ¿¡ ´ëÇÑ Á¤º¸¸¦ º¸¿©ÁÖ´Â ÄÚµå ÀÛ¼ºÇÊ¿ä
-    2.µ¥ÀÌÅÍ »èÁ¦½Ã ÀÎµ¦½º°ª ÇÏÇâ Á¶Á¤ÇÊ¿ä
+    1.ì‚­ì œëœ ë°ì´í„°ì— ëŒ€í•œ ì •ë³´ë¥¼ ë³´ì—¬ì£¼ëŠ” ì½”ë“œ ì‘ì„±í•„ìš”
+    2.ë°ì´í„° ì‚­ì œì‹œ ì¸ë±ìŠ¤ê°’ í•˜í–¥ ì¡°ì •í•„ìš”
     */
-    printf("ÇØ´ç ·¹½ÃÇÇ°¡ »èÁ¦µÇ¾ú½À´Ï´Ù.\n\n");
+    printf("í•´ë‹¹ ë ˆì‹œí”¼ê°€ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.\n\n");
 }
 
 Food* f_random(Food **p, int count){
@@ -221,10 +221,10 @@ Food* f_random(Food **p, int count){
 
     }
     /*
-        ÄÚµå Ãß°¡ ÀÛ¼ºÇÊ¿ä
+        ì½”ë“œ ì¶”ê°€ ì‘ì„±í•„ìš”
     */
 
-    printf("\t[ ¿À´ÃÀÇ À½½Ä ÃßÃµ ]\n\n")
+    printf("\t[ ì˜¤ëŠ˜ì˜ ìŒì‹ ì¶”ì²œ ]\n\n");
     printf("%d) %s\n",p[idx]->f_idx,p[idx]->f_name);
     return p[idx];
 }
@@ -232,15 +232,15 @@ Food* f_random(Food **p, int count){
 int select_menu(){
 
     int menu;
-    printf("\t[   ¸Ş  ´º  ]\n\n");
-    printf("1. »õ·Î¿î ·¹½ÃÇÇ Ãß°¡\n");
-    printf("2. ¸ğµç ¸Ş´º Ãâ·Â\n");
-    printf("3. ¸Ş´º Á¤º¸ ¼öÁ¤\n");
-    printf("4. ·¹½ÃÇÇ »èÁ¦\n");
-    printf("5. ·£´ı¸Ş´º ÃßÃµ\n");
-    printf("0. Á¾·á\n");
+    printf("\t[   ë©”  ë‰´  ]\n\n");
+    printf("1. ìƒˆë¡œìš´ ë ˆì‹œí”¼ ì¶”ê°€\n");
+    printf("2. ëª¨ë“  ë©”ë‰´ ì¶œë ¥\n");
+    printf("3. ë©”ë‰´ ì •ë³´ ìˆ˜ì •\n");
+    printf("4. ë ˆì‹œí”¼ ì‚­ì œ\n");
+    printf("5. ëœë¤ë©”ë‰´ ì¶”ì²œ\n");
+    printf("0. ì¢…ë£Œ\n");
 
-    printf("\n¸Ş´º ¼±ÅÃ => ");
+    printf("\në©”ë‰´ ì„ íƒ => ");
     scanf("%d",&menu);
     return menu;
 
