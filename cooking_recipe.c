@@ -224,8 +224,9 @@ Food* f_random(Food **p, int count){
         코드 추가 작성필요
     */
 
-    
-    return p[rand_num];
+    printf("\t[ 오늘의 음식 추천 ]\n\n")
+    printf("%d) %s\n",p[idx]->f_idx,p[idx]->f_name);
+    return p[idx];
 }
 
 int select_menu(){
