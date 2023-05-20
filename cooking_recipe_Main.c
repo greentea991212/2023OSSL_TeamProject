@@ -42,14 +42,11 @@ int main(void){
         }
         else if(menu == 5){
 
+            system("cls");
             f_random(arr,idx);
         }
 
-        
-            
     }
-
-
-
+    
     return 0;
 }

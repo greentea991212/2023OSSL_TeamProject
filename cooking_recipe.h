@@ -14,7 +14,7 @@ typedef struct _food{
 arr[idx]를 초기화 할 수 있는 함수가 필요하다.
 
 */
-void f_inint(Food *p);
+void f_inint(Food *p);              //구조체 변수 초기화
 void f_recipe_add(Food *p);        //요리 레시피 추가
 void f_recipe_list(Food **p, int count);       //전체 출력
 void f_recipe_update(Food **p, int count);     //요리 레시피 수정
@@ -31,6 +31,7 @@ Food* f_find_index(Food **p, int count);        //레시피 관리 번호로 레시피 찾기
 Food* f_random(Food **p, int count);            //음식 레피시 추천 뽑아주기
 
 int select_menu();
+
 
 
 
