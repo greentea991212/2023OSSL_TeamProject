@@ -46,26 +46,39 @@
 ## 🥢데이터 및 기능 함수
 
 ```c
-    typedef struct {
-      char * f_name; //음식 이름
-      char * f_recipe_wiki; //음식 레시피 위키 (내용)
-      char * f_cat; //음식 카테고리 ("cat"egory)
-      int f_index; //레시피 관리 번호
-    }f_recipe;
-    
-    void f_recipe_add();        //요리 레시피 추가
-    void f_recipe_list();       //전체 출력
-    void f_recipe_update();     //요리 레시피 수정
-    void f_recipe_delete();     //요리 레시피 삭제
+      #define BUFFER_SIZE    100        //문자열 버퍼 저장 크기
+      #define DATA_SIZE   50        //프로그램에 저장되어지는 음식 데이터 수
 
-    void f_file_lode();         //.txt 파일 읽어오기
-    void f_file_save();         //.txt 파일 저장하기
+      typedef struct _food{
 
-    void f_find_name();         //이름으로 레시피 찾기
-    void f_find_cat();          //카테고리로 레시피 찾기
-    void f_find_index();        //레시피 관리 번호로 레시피 찾기
+          char f_name[BUFFER_SIZE];       //음식 이름을 저장하는 문자열 변수
+          char wiki[BUFFER_SIZE];         //음식 레시피를 저장하는 문자열 변수
+          char f_category[10];            //[한식, 중식, 일식, 양식] 중 하나의 음식 종류를 저장하는 문자열 변수
+          int f_idx;                      //음식 마다 (등록 순으로) 저장되어지는 자숫자
 
-    void f_random();            //음식 레피시 추천 뽑아주기
+      }Food;
+
+      /*
+      arr[idx]를 초기화 할 수 있는 함수가 필요하다.
+
+      */
+      void f_inint(Food *p);                     //구조체 변수 초기화하는 함수
+      void f_recipe_add(Food *p);               //요리를 추가하는 함수
+      void f_recipe_list(Food **p, int count);       //등록된 요리를 모두 출력하는 함수
+      void f_recipe_update(Food **p, int count);     //요리에 대한 정보를 수정하는
+      void f_recipe_delete(Food **p,int count);     //요리 레시피 삭제
+
+      void f_file_lode();         //.txt 파일 읽어오기
+      void f_file_save();         //.txt 파일 저장하기
+
+
+      void f_find_cat(Food **p, int count);            //음식 종류를 통해 음식을 탐색해주는 함수
+      Food* f_find_name(Food **p, int count);         //이름으로 음식을 탐색하는 함수
+      Food* f_find_index(Food **p, int count);        //음식의 번호로 음식을 탐색하는 함수
+
+      Food* f_random(Food **p, int count);            //랜덤으로 음식을 추천해주는 함수
+
+      int select_menu();                              //Menu driven을 구현하는 함수
 ```
  
     
