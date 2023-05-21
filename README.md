@@ -58,10 +58,6 @@
 
       }Food;
 
-      /*
-      arr[idx]를 초기화 할 수 있는 함수가 필요하다.
-
-      */
       void f_inint(Food *p);                     //구조체 변수 초기화하는 함수
       void f_recipe_add(Food *p);               //요리를 추가하는 함수
       void f_recipe_list(Food **p, int count);       //등록된 요리를 모두 출력하는 함수
