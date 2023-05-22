@@ -26,26 +26,21 @@ int main(void){
             f_recipe_add(arr[idx]);
             arr[idx]->f_idx = idx+1;
             idx++;
-            system("cls");
         }
         else if(menu == 2){
 
-            system("cls");
             f_recipe_list(arr,idx);
         }
         else if(menu == 3){
 
-            system("cls");
             f_recipe_update(arr,idx);
         }
         else if(menu == 4){
 
-            system("cls");
             f_recipe_delete(arr,idx);
         }
         else if(menu == 5){
 
-            system("cls");
             f_random(arr,idx);
         }
 

@@ -2,7 +2,6 @@
 #include<string.h>
 #include<stdlib.h>
 #include<time.h>
-#include<windows.h>
 //#include<unistd.h>
 #include"cooking_recipe.h"
 
@@ -22,8 +21,7 @@ void f_recipe_add(Food *p){
         scanf("%s",p->f_category);
         if(strcmp(p->f_category,"한식") == 0 || strcmp(p->f_category,"중식") == 0 || strcmp(p->f_category,"일식") == 0 || strcmp(p->f_category,"양식") == 0) break;
         else printf("\n등록할 수 있는 카테고리가 아닙니다.\n\n");
-        Sleep(150);
-        system("cls");
+        
     }
 
     getchar();
@@ -36,7 +34,6 @@ void f_recipe_add(Food *p){
     scanf("%[^q]s",p->wiki);
 
     printf("\n메뉴 추가가 완료되었습니다!\n");
-    Sleep(300);
     getchar();
     return;
 
@@ -122,8 +119,6 @@ Food* f_find_name(Food **p, int count){
     }
 
     printf("입력하신 메뉴는 존재하지 않습니다.\n\n");
-    Sleep(300);
-    system("cls");
     return NULL;
    
 }
@@ -322,17 +317,23 @@ int f_file_load(Food **p)
     int idx=0;
     FILE * fp;
     fp = fopen("recipe.txt", "rt");
+    
     char c;
     if(fp == 0x0) 
         printf("txt 파일 내용이 없습니다. :<\n");
     else
     {
-        while(!feof(fp))
+        while(1)
         {
-            
+            p[idx] = (Food*)malloc(sizeof(Food));
+            f_inint(p[idx]);
+            if((fgetc(fp)) == EOF) break;
             int count = fscanf(fp, "%s", p[idx]->f_category);
+            break;
             if(count <= 0) break;
+            
             fgets(p[idx]->f_name, BUFFER_SIZE, fp);
+            
             p[idx]->f_name[strlen(p[idx]->f_name)-1] = '\0';
             
             fscanf(fp,"%[^q]s",p[idx]->wiki);
@@ -342,6 +343,8 @@ int f_file_load(Food **p)
     fclose(fp);
     return idx;
 }         
+
+
 void f_file_save(Food **p, int idx)
 {
     FILE * fp;
