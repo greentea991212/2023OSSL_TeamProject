@@ -32,8 +32,8 @@ void f_recipe_add(Food *p){
     p->f_name[strlen(p->f_name)-1] = '\0';
 
     printf("%s의 레시피 내용 : ",p->f_name);
-    fgets(p->wiki,BUFFER_SIZE,stdin);
-    p->wiki[strlen(p->wiki)-1] = '\0';
+    
+    scanf("%[^q]s",p->wiki);
 
     printf("\n메뉴 추가가 완료되었습니다!\n");
     Sleep(300);
@@ -319,8 +319,7 @@ int f_file_load(Food **p)
             fgets(p[idx]->f_name, BUFFER_SIZE, fp);
             p[idx]->f_name[strlen(p[idx]->f_name)-1] = '\0';
             
-            fgets(p[idx]->wiki, BUFFER_SIZE, fp);
-            p[idx]->wiki[strlen(p[idx]->wiki)-1] = '\0';
+            fscanf(fp,"%[^q]s",p[idx]->wiki);
             idx++;
         }
     }
@@ -334,7 +333,7 @@ void f_file_save(Food **p, int idx)
     
     for(int i=0 ; i<idx ; i++)
     {
-        fprintf(fp,"%s %s\n%s\nquit\n",p[i]->f_category, p[i]->f_name, p[i]->wiki);
+        fprintf(fp,"%s %s\n%s\nq\n",p[i]->f_category, p[i]->f_name, p[i]->wiki);
     }
     fclose(fp);
 }
