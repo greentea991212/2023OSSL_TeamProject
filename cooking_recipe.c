@@ -335,7 +335,7 @@ void f_file_save(Food **p, int idx)
     
     for(int i=0 ; i<idx ; i++)
     {
-        fprintf(fp,"%s\n%s\n%s\n",p[i]->f_category, p[i]->f_name, p[i]->wiki);
+        fprintf(fp,"%s %s\n%s\n",p[i]->f_category, p[i]->f_name, p[i]->wiki);
     }
     fclose(fp);
 }
