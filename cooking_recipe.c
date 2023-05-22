@@ -2,8 +2,8 @@
 #include<string.h>
 #include<stdlib.h>
 #include<time.h>
-//#include<windows.h>
-#include<unistd.h>
+#include<windows.h>
+//#include<unistd.h>
 #include"cooking_recipe.h"
 
 void f_inint(Food *p){
