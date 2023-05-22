@@ -299,8 +299,9 @@ int select_menu(){
 }
 
 
-int f_file_load(Food **p, int idx)
+int f_file_load(Food **p)
 {
+    int idx=0;
     FILE * fp;
     fp = fopen("recipe.txt", "rt");
     char c;
@@ -308,12 +309,19 @@ int f_file_load(Food **p, int idx)
         printf("txt 파일 내용이 없습니다. :<\n");
     else
     {
-        
-        while((fputs(&c, fp)) != EOF)
+        while(1)
         {
-            fscanf(fp, "%s", p[idx]->f_category);
-            fscanf(fp, "%s", p[idx]->f_name);
-            fscanf(fp, "%s", p[idx]->wiki);
+            if((fgetc(fp)) == EOF) break;
+
+            int count = fscanf(fp, "%s", p[idx]->f_category);
+
+            if(count <= 0) break;
+            
+            fgets(p[idx]->f_name, BUFFER_SIZE, fp);
+            p[idx]->f_name[strlen(p[idx]->f_name)-1] = '\0';
+            
+            fgets(p[idx]->wiki, BUFFER_SIZE, fp);
+            p[idx]->wiki[strlen(p[idx]->wiki)-1] = '\0';
             idx++;
         }
     }
@@ -327,7 +335,7 @@ void f_file_save(Food **p, int idx)
     
     for(int i=0 ; i<idx ; i++)
     {
-        fprintf(fp,"%s\n%s\n%s\n",p[i]->f_category, p[i]->f_name, p[i]->wiki);
+        fprintf(fp,"%s %s\n%s\n",p[i]->f_category, p[i]->f_name, p[i]->wiki);
     }
     fclose(fp);
 }
