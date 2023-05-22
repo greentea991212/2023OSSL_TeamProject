@@ -2,7 +2,7 @@
 #include<string.h>
 #include<stdlib.h>
 #include<time.h>
-//include<windows.h>
+#include<windows.h>
 //#include<unistd.h>
 #include"cooking_recipe.h"
 
@@ -31,12 +31,13 @@ void f_recipe_add(Food *p){
     fgets(p->f_name,BUFFER_SIZE,stdin);
     p->f_name[strlen(p->f_name)-1] = '\0';
 
-    printf("%s의 레시피 내용 : ",p->f_name);
+    printf("%s의 레시피 내용 (작성을 마치면, 'q'를 입력해주세요)\n\n",p->f_name);
     
     scanf("%[^q]s",p->wiki);
 
     printf("\n메뉴 추가가 완료되었습니다!\n");
     Sleep(300);
+    getchar();
     return;
 
 }
@@ -55,6 +56,24 @@ void f_recipe_list(Food **p, int count){
     }
     
     printf("\n");
+
+    int menu;
+    int index;
+
+    printf("상세 레시피들을 조회 해보시겠습니까?\n\n");
+    printf("1. 네\n");
+    printf("2. 아니요\n");
+    scanf("%d",&menu);
+
+    if(menu == 1){
+
+        printf("\n원하는 음식의 번호를 선택해 주세요 => ");
+        scanf("%d",&index);
+
+        printf("\n\t[   레시피  ]\n\n");
+        printf("%s\n\n",p[index-1]->wiki);
+    }
+
 }
 
 void f_find_cat(Food **p, int count){
@@ -308,14 +327,11 @@ int f_file_load(Food **p)
         printf("txt 파일 내용이 없습니다. :<\n");
     else
     {
-        while(1)
+        while(!feof(fp))
         {
-            if((fgetc(fp)) == EOF) break;
-
-            int count = fscanf(fp, "%s", p[idx]->f_category);
-
-            if(count <= 0) break;
             
+            int count = fscanf(fp, "%s", p[idx]->f_category);
+            if(count <= 0) break;
             fgets(p[idx]->f_name, BUFFER_SIZE, fp);
             p[idx]->f_name[strlen(p[idx]->f_name)-1] = '\0';
             

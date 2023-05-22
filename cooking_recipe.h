@@ -1,4 +1,4 @@
-#define BUFFER_SIZE    100
+#define BUFFER_SIZE    10000
 #define DATA_SIZE   50
 
 typedef struct _food{
@@ -10,10 +10,7 @@ typedef struct _food{
 
 }Food;
 
-/*
-arr[idx]를 초기화 할 수 있는 함수가 필요하다.
 
-*/
 void f_inint(Food *p);              //구조체 변수 초기화
 void f_recipe_add(Food *p);        //요리 레시피 추가
 void f_recipe_list(Food **p, int count);       //전체 출력
