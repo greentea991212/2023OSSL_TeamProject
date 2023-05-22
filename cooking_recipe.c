@@ -2,8 +2,8 @@
 #include<string.h>
 #include<stdlib.h>
 #include<time.h>
-#include<windows.h>
-//#include<unistd.h>
+//#include<windows.h>
+#include<unistd.h>
 #include"cooking_recipe.h"
 
 void f_inint(Food *p){
@@ -299,8 +299,9 @@ int select_menu(){
 }
 
 
-int f_file_load(Food **p, int idx)
+int f_file_load(Food **p)
 {
+    int idx=0;
     FILE * fp;
     fp = fopen("recipe.txt", "rt");
     char c;
@@ -308,12 +309,19 @@ int f_file_load(Food **p, int idx)
         printf("txt 파일 내용이 없습니다. :<\n");
     else
     {
-        
-        while((fputs(&c, fp)) != EOF)
+        while(1)
         {
-            fscanf(fp, "%s", p[idx]->f_category);
-            fscanf(fp, "%s", p[idx]->f_name);
-            fscanf(fp, "%s", p[idx]->wiki);
+            if((fgetc(fp)) == EOF) break;
+
+            int count = fscanf(fp, "%s", p[idx]->f_category);
+
+            if(count <= 0) break;
+            
+            fgets(p[idx]->f_name, BUFFER_SIZE, fp);
+            p[idx]->f_name[strlen(p[idx]->f_name)-1] = '\0';
+            
+            fgets(p[idx]->wiki, BUFFER_SIZE, fp);
+            p[idx]->wiki[strlen(p[idx]->wiki)-1] = '\0';
             idx++;
         }
     }
