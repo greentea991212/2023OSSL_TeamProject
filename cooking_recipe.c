@@ -2,7 +2,7 @@
 #include<string.h>
 #include<stdlib.h>
 #include<time.h>
-#include<windows.h>
+//include<windows.h>
 //#include<unistd.h>
 #include"cooking_recipe.h"
 
@@ -51,8 +51,7 @@ void f_recipe_list(Food **p, int count){
     printf("\n\t< 등록된 레시피 목록 >\n\n");
 
     for(int i = 0; i < count; i++){
-
-        printf("%d) %s\n",i+1,p[i]->f_name);
+        printf("%d) %s \t종류 : %s\n\n",p[i]->f_idx,p[i]->f_name,p[i]->f_category);
     }
     
     printf("\n");
@@ -335,7 +334,7 @@ void f_file_save(Food **p, int idx)
     
     for(int i=0 ; i<idx ; i++)
     {
-        fprintf(fp,"%s %s\n%s\n",p[i]->f_category, p[i]->f_name, p[i]->wiki);
+        fprintf(fp,"%s %s\n%s\nquit\n",p[i]->f_category, p[i]->f_name, p[i]->wiki);
     }
     fclose(fp);
 }
