@@ -10,6 +10,8 @@ int main(void){
     int menu;
     int idx = 0;    //저장되어진 데이터수를 카운팅 및 배열의 인덱스로 활용하기 위한 변수
 
+    idx = f_file_load(arr, idx);
+
     while(1){
 
         menu = select_menu();
@@ -48,5 +50,7 @@ int main(void){
 
     }
     
+    f_file_save(arr, idx);
+
     return 0;
 }
