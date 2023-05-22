@@ -3,6 +3,7 @@
 #include<stdlib.h>
 #include<time.h>
 #include<windows.h>
+//#include<unistd.h>
 #include"cooking_recipe.h"
 
 void f_inint(Food *p){
@@ -17,15 +18,12 @@ void f_inint(Food *p){
 void f_recipe_add(Food *p){
 
     while(1){
-
-
         printf("메뉴 종류 [한식, 중식, 일식, 양식 중 택 1] : ");
         scanf("%s",p->f_category);
         if(strcmp(p->f_category,"한식") == 0 || strcmp(p->f_category,"중식") == 0 || strcmp(p->f_category,"일식") == 0 || strcmp(p->f_category,"양식") == 0) break;
         else printf("\n등록할 수 있는 카테고리가 아닙니다.\n\n");
         Sleep(150);
         system("cls");
-        
     }
 
     getchar();
@@ -298,4 +296,38 @@ int select_menu(){
     scanf("%d",&menu);
     return menu;
 
+}
+
+
+int f_file_load(Food **p, int idx)
+{
+    FILE * fp;
+    fp = fopen("recipe.txt", "rt");
+    char c;
+    if(fp == 0x0) 
+        printf("txt 파일 내용이 없습니다. :<\n");
+    else
+    {
+        
+        while((fputs(&c, fp)) != EOF)
+        {
+            fscanf(fp, "%s", p[idx]->f_category);
+            fscanf(fp, "%s", p[idx]->f_name);
+            fscanf(fp, "%s", p[idx]->wiki);
+            idx++;
+        }
+    }
+    fclose(fp);
+    return idx;
+}         
+void f_file_save(Food **p, int idx)
+{
+    FILE * fp;
+    fp = fopen("recipe.txt","wt");
+    
+    for(int i=0 ; i<idx ; i++)
+    {
+        fprintf(fp,"%s\n%s\n%s\n",p[i]->f_category, p[i]->f_name, p[i]->wiki);
+    }
+    fclose(fp);
 }

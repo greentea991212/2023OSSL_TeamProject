@@ -20,8 +20,8 @@ void f_recipe_list(Food **p, int count);       //전체 출력
 void f_recipe_update(Food **p, int count);     //요리 레시피 수정
 void f_recipe_delete(Food **p,int count);     //요리 레시피 삭제
 
-void f_file_lode();         //.txt 파일 읽어오기
-void f_file_save();         //.txt 파일 저장하기
+int f_file_load(Food **p, int idx);         //.txt 파일 읽어오기
+void f_file_save(Food **p, int idx);         //.txt 파일 저장하기
 
 
 void f_find_cat(Food **p, int count);          //카테고리로 레시피 출력
